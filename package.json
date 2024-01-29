@@ -1,10 +1,11 @@
 {
   "name": "@webbydevs/react-laravel-sanctum-auth",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A React library for easy authentication for a Laravel backend using Sanctum.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup"
+    "build": "tsup",
+    "ladle": "ladle serve"
   },
   "repository": {
     "type": "git",
@@ -17,15 +18,16 @@
   },
   "homepage": "https://github.com/webbyofficial/react-laravel-sanctum-auth#readme",
   "devDependencies": {
+    "@ladle/react": "^4.0.2",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "react": "^18.2.0"
   },
   "files": [
     "dist"

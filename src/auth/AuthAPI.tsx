@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import axios from "axios";
 
 import { UserType, useAuth } from "./AuthContext";
 import useApiClient from "./useApiClient";
@@ -7,7 +8,7 @@ export function useFetchCsrfToken() {
   const apiClient = useApiClient();
 
   const fetchCsrfToken = async (path: string = "sanctum/csrf-cookie") => {
-    await apiClient.get(path);
+    await axios.get(path);
     var xsrf_token = "";
     document.cookie.split(";").forEach((cookie) => {
       if (cookie.split("=")[0].includes("XSRF-TOKEN")) {
