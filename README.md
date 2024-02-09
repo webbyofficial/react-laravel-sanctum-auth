@@ -4,7 +4,7 @@
 
 This package provides a set of React hooks and components for implementing authentication in a React application using Laravel Sanctum as the backend authentication mechanism.
 
-### Features
+## Features
 
 - Seamless integration with Laravel Sanctum authentication.
 - Hooks for performing login, registration, and logout actions.
@@ -21,7 +21,7 @@ npm install react-laravel-sanctum-auth
 
 ## Usage
 
-### 1. Setup AuthProvider
+#### 1. Setup AuthProvider
 
 Wrap your application with the AuthProvider component provided by this package. This component should be placed at the root of your React application to manage authentication state globally.
 
