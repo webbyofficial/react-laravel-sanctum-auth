@@ -2,29 +2,15 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { useFetchCsrfToken } from "./AuthAPI";
 
-export type UserType = {
-  user: {
-    id: number;
-    name: string;
-    email: string;
-  };
-};
-
-export type AuthContextType = {
-  user: UserType | null;
-  setUser: (user: UserType | null) => void;
-  csrfToken: string | null;
-  setCsrfToken: (token: string) => void;
-};
-
 const AuthContent = createContext<AuthContextType>({
   user: null,
   setUser: (user: UserType | null) => {},
   csrfToken: null,
   setCsrfToken: (token: string) => {},
+  config: null,
 });
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ config, children }: AuthContextProps) {
   const fetchCsrfToken = useFetchCsrfToken();
   const [user, _setUser] = useState<UserType>(
     (JSON.parse(localStorage.getItem("user") as string) as UserType) || null
@@ -57,7 +43,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function fetchCsrf() {
-      const xsrf_token = await fetchCsrfToken();
+      const xsrf_token = await fetchCsrfToken(config.csrfCookieUrl);
       setCsrfToken(xsrf_token);
     }
     fetchCsrf();
@@ -65,7 +51,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContent.Provider value={{ user, setUser, csrfToken, setCsrfToken }}>
+    <AuthContent.Provider
+      value={{ user, setUser, csrfToken, setCsrfToken, config }}
+    >
       {children}
     </AuthContent.Provider>
   );

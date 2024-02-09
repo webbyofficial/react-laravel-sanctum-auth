@@ -1,10 +1,10 @@
 {
   "name": "@webbydevs/react-laravel-sanctum-auth",
-  "version": "1.0.2",
+  "version": "1.0.26",
   "description": "A React library for easy authentication for a Laravel backend using Sanctum.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup",
+    "build": "tsup --format esm --dts",
     "ladle": "ladle serve"
   },
   "repository": {
@@ -32,6 +32,5 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "main": "dist/index.mjs"
 }

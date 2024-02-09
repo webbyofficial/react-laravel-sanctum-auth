@@ -5,21 +5,13 @@ import {
   useFetchCsrfToken,
 } from "./auth/AuthAPI";
 import useApiClient from "./auth/useApiClient";
-import {
-  UserType,
-  AuthContextType,
-  AuthProvider,
-  useAuth,
-} from "./auth/AuthContext";
+import { AuthProvider } from "./auth/AuthContext";
 
 export {
+  AuthProvider,
   useRegister,
   useLogin,
   useLogout,
   useFetchCsrfToken,
   useApiClient,
-  useAuth,
-  AuthProvider,
-  UserType,
-  AuthContextType,
 };

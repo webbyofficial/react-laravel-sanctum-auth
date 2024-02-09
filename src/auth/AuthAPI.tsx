@@ -1,13 +1,11 @@
 import { AxiosInstance } from "axios";
 import axios from "axios";
 
-import { UserType, useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 import useApiClient from "./useApiClient";
 
 export function useFetchCsrfToken() {
-  const apiClient = useApiClient();
-
-  const fetchCsrfToken = async (path: string = "sanctum/csrf-cookie") => {
+  const fetchCsrfToken = async (path: string) => {
     await axios.get(path);
     var xsrf_token = "";
     document.cookie.split(";").forEach((cookie) => {
@@ -41,9 +39,14 @@ async function BasicAuthAPIRequest(
 
 export function useLogin() {
   const apiClient = useApiClient();
-  const { setUser } = useAuth();
-  const login = async (path: string = "api/login", requestBody: object) => {
-    return await BasicAuthAPIRequest(path, requestBody, apiClient, setUser);
+  const { setUser, config } = useAuth();
+  const login = async (requestBody: object) => {
+    return await BasicAuthAPIRequest(
+      config?.loginUrl || "",
+      requestBody,
+      apiClient,
+      setUser
+    );
   };
 
   return { login };
@@ -51,13 +54,15 @@ export function useLogin() {
 
 export function useRegister() {
   const apiClient = useApiClient();
-  const { setUser } = useAuth();
+  const { setUser, config } = useAuth();
 
-  const register = async (
-    path: string = "api/register",
-    requestBody: object
-  ) => {
-    return await BasicAuthAPIRequest(path, requestBody, apiClient, setUser);
+  const register = async (requestBody: object) => {
+    return await BasicAuthAPIRequest(
+      config?.registerUrl || "",
+      requestBody,
+      apiClient,
+      setUser
+    );
   };
 
   return { register };
@@ -65,11 +70,11 @@ export function useRegister() {
 
 export function useLogout() {
   const apiClient = useApiClient();
-  const { setUser } = useAuth();
+  const { setUser, config } = useAuth();
 
-  const logout = async (path: string = "api/logout") => {
+  const logout = async () => {
     try {
-      await apiClient.post(path).then((response) => {
+      await apiClient.post(config?.logoutUrl || "").then((response) => {
         if (response.status === 200) {
           localStorage.removeItem("user");
           setUser(null);
