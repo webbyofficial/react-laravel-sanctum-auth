@@ -21,7 +21,7 @@ npm install react-laravel-sanctum-auth
 
 ## Usage
 
-#### Setup AuthProvider
+### Setup AuthProvider
 
 Wrap your application with the AuthProvider component provided by this package. This component should be placed at the root of your React application to manage authentication state globally.
 
@@ -37,7 +37,7 @@ function App() {
 }
 ```
 
-#### Use Authentication Hooks
+### Use Authentication Hooks
 
 `useAuth`
 
