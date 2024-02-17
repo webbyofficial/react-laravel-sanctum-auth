@@ -120,9 +120,39 @@ function LoginForm() {
 }
 ```
 
-4.  - Interceptors
-      The package automatically adds the CSRF token to all outgoing requests using Axios interceptors.
+### Use the API client
 
-## Conclusion
+This package also provides you with an Axios API client which will handle the authentication of your HTTP requests.
+
+#### `useApiClient`
+
+This hook returns an Axios Instance which you can use make your authenticated http requests.
+
+```jsx
+import { useApiClient } from "react-laravel-sanctum-auth";
+
+function MyComponent() {
+  const apiClient = useApiClient();
+
+  const fetchData = async () => {
+    try {
+      const response = await apiClient.get("/some-endpoint");
+      console.log("Data:", response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  return <div>{/* Your component UI */}</div>;
+}
+```
+
+## Summary
 
 The React Laravel Sanctum Authentication package simplifies the process of implementing authentication in React applications using Laravel Sanctum as the backend authentication mechanism. By providing a set of hooks and components, it allows developers to focus on building their application's user interface while handling authentication seamlessly in the background.
+
+## Thank you
+
+Thank you for choosing the @webbydevs/react-laravel-sanctum-auth library to enhance your React applications! We're excited to be a part of your creative journey and we hope this package will make your life as a developer easier. Thanks again for being a part of our community. Happy coding!
+
+Also, check out our organization at https://webbydevs.com
