@@ -43,7 +43,9 @@ export function AuthProvider({ config, children }: AuthContextProps) {
 
   useEffect(() => {
     async function fetchCsrf() {
-      const xsrf_token = await fetchCsrfToken(config.csrfCookieUrl);
+      const xsrf_token = await fetchCsrfToken(
+        new URL(config.csrfCookieUrl, config.baseUrl).href
+      );
       setCsrfToken(xsrf_token);
     }
     fetchCsrf();

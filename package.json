@@ -1,6 +1,6 @@
 {
   "name": "@webbydevs/react-laravel-sanctum-auth",
-  "version": "1.0.29",
+  "version": "1.0.31",
   "description": "A React library for easy authentication for a Laravel backend using Sanctum.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -32,5 +32,12 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.mjs"
+  "main": "dist/index.mjs",
+  "keywords": [
+    "react",
+    "laravel",
+    "sanctum",
+    "auth",
+    "authentication"
+  ]
 }
